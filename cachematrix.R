@@ -1,6 +1,6 @@
 ## The script includes two functions for inversing a matrix. 
 ## The matrix should be invertible. To obviate a costly computation when 
-## the inverse matrix was computed earlier the script uses cashed matrix
+## the inverse matrix was computed earlier the script uses cached matrix
 
 ## Creates a  matrix  object that can cache its inverse.
 ## It make a list of functions to set or get the invercible matrix 
@@ -9,7 +9,7 @@
 makeCacheMatrix <- function(x = matrix()) {
   invx <- NULL
   
-  ## set the matrix x, erase cashed inverse matrix
+  ## set the matrix x, erase cached inverse matrix
   set <- function(y) {
     x <<- y
     invx <<- NULL                   
@@ -38,9 +38,9 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   
-  ## get a cashed inverse matrix
+  ## get an inverse matrix from cache
   invx <- x$getinverse()
-  ## if there is no cashed inverse matrix calculate it
+  ## if there is no the inverse matrix in cache, calculate it
   if(is.null(invx)) {
     data <- x$get()
     invx <- solve(data)
